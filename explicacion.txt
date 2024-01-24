@@ -1,0 +1,22 @@
+La idea es:
+
+Tengo un forms.html, aqui tengo de normal un formulario para ingresar el correo y dos botones 
+uno para registrar y el otro para iniciar sesions
+
+ -Si ya tengo cuenta (que se mira con un fetch al server no dejo registrar y si no lo hay no dejo iniciar sesion)
+
+ -Una vez se verifica y le doy a cualquiera el script me modifica el html por el que sea necesario.
+ 
+ -Si el usuario quiere ir atras pulsa la flecha de arriva y vuelve a escribir en codigo de inicio
+
+ -Si todo esta correcto el formulario se envia y pasa lo que tendria que hacer.
+
+Lo que pasa:
+
+La logica de los pasos se hacerla mas o menos pero no se como cuadrarlo todo junto.
+He separado los script que he hecho en Validadores (Que validan los formularios) y
+CambiaFormularios (que hace los cambios de formulario)
+
+
+
+El .html principal es forms.html, los otros en la carpeta HTML los he dejado para hacer mas facil la lectura
