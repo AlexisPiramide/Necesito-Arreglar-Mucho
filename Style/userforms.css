@@ -197,3 +197,11 @@ hr {
   border: none;
   border-top: 1px solid #ccc;
 }
+
+
+#formlogin{
+  display: none;
+}
+#formregistro{
+  display: none;
+}

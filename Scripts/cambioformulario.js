@@ -1,28 +1,63 @@
-const htmllogin = `<button id="volver"><img src="../../Volver.png"></button><header>Inicio Sesion</header><form action="#"><div class="field email"><div class="input-area"><input id="campoemail" type="email" placeholder="Email Address" disabled value="220240@fppiramide.com"><i class="icon fas fa-envelope"></i><i class="error error-icon fas fa-exclamation-circle"></i></div><div class="error error-txt">Email can't be blank</div></div><div class="field password"><div class="input-area"><input type="password" placeholder="Password"><i class="icon fas fa-lock"></i><i class="error error-icon fas fa-exclamation-circle"></i></div><div class="error error-txt">Password can't be blank</div></div><div class="pass-txt"><a href="#">¿Olvidaste tu contraseña?</a></div><input type="submit" value="Login"></form><div class="sign-txt">¿Nuevo Usuario? <a id="cambio">Registrate</a></div>`;
-const htmlregistro = `<button id="volver"><img src="../../Volver.png"></button><header>Registro</header><form action="#"><div class="field"><div class="input-area"><input type="text" placeholder="Usuario" name="usuario"><i class="icon fas fa-user"></i><i class="error error-icon fas fa-exclamation-circle"></i></div><div class="error error-txt">Usuario can't be blank</div></div><div class="field email"><div class="input-area"><input type="email" disabled value="220240@fppiramide.com"><i class="icon fas fa-envelope"></i><i class="error error-icon fas fa-exclamation-circle"></i></div><div class="error error-txt">Email can't be blank</div></div><div class="field password"><div class="input-area"><input id="password" type="password" placeholder="Password" name="password"><i class="icon fas fa-lock"></i><i class="error error-icon fas fa-exclamation-circle"></i></div><div class="error error-txt">Password can't be blank</div></div><div class="field password"><div class="input-area"><input id="repetirpassword" type="password" placeholder="Confirm Password" name="confirmPassword"><i class="icon fas fa-lock"></i><i class="error error-icon fas fa-exclamation-circle"></i></div><div class="error error-txt">Passwords don't match</div></div><div class="pass-txt"><a href="#">¿Olvidaste tu contraseña?</a></div><input type="submit" value="Registrarse"></form><div class="sign-txt">¿Ya tienes una cuenta? <a id="cambio">Inicia Sesión</a></div></div>`;
-const htmlSelector = `<div class="wrapper"><form><div class="form-group"><label for="email">Email</label><input id="email" autofocus="" type="email" name="email" placeholder="email@example.com" required="required"></div><div class="form-group"><button id="registro" type="submit" class="button"><span>Registro nuevos usuarios</span></button></div><div class="form-group"><button id="inicio" type="submit" class="button"><span>Inicio de sesion con Email</span></button></div></form></div>`;
+
+const wrapper = document.getElementById('wrapper');
 
 
-function cambioFormulario(){
-    const cambio = document.getElementById("cambio");
-    cambio.addEventListener("click", () => logicaCambio(htmlregistro, htmllogin, htmlSelector));
-    const volver = document.getElementById("volver");
-    volver.addEventListener("click", () => logicaCambio(htmlregistro, htmllogin, htmlSelector));
+const login = wrapper.getElementById('login');
+const form = wrapper.getElementById('form');
+const registro = wrapper.getElementById('registro');
+
+
+function submitForm(e) {
+    e.preventDefault();
+
+    const emailInput = document.getElementById('email');
+    const buttonId = e.target.id;
+
+    const emailValue = emailInput.value;
+
+    ValidadorEmail(emailValue);
+
+    if (buttonId === 'login') {
+        mostrarLogin();
+    } else if (buttonId === 'form') {
+        mostrarForm();
+    } else if (buttonId === 'registro') {
+        mostrarRegistro();
+    }
+
 }
 
-function logicaCambio(htmlregistro, htmllogin, htmlSelector) {
-    const id = event.target.id;
-    const wrapper = document.getElementById("wrapper");
-    const cambio = document.getElementById("cambio");
-    if(id === "cambio"){
-        if (cambio.value === "registro"){
-            wrapper.innerHTML = htmlregistro;
+function mostrarLogin() {
+    login.style.display = 'block';
+    form.style.display = 'none';
+    registro.style.display = 'none';
+}
+
+
+function mostrarForm() {
+    login.style.display = 'none';
+    form.style.display = 'block';
+    registro.style.display = 'none';
+}
+
+
+function mostrarRegistro() {
+    login.style.display = 'none';
+    form.style.display = 'none';
+    registro.style.display = 'block';
+}
+
+
+function ValidadorEmail() {
+    let emailInput = document.getElementById("email");
+    emailInput.addEventListener("blur", function () {
+        let email = emailInput.value;
+
+        if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            this.setCustomValidity("");
+        } else {
+            this.setCustomValidity("El correo electrónico no es válido");
+            this.reportValidity();
         }
-        if(cambio.value === "inicio"){
-            wrapper.innerHTML = htmllogin;
-        }
-    }
-    if (id === "volver") {
-        wrapper.innerHTML = htmlSelector;
-    }
+    });
 }
