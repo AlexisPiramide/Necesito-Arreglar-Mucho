@@ -138,19 +138,19 @@ form input[type="submit"]:hover{
   background: #2c52ed;
 }
 
-#volver > img{
+#volver > img, #volver2 > img{
   width: 45px;
   height: 40px;
 }
 
-#volver {
+#volver,#volver2 {
   border: none;
   background-color: #fff;
   padding: 10px;
   border-radius: 20px;
 }
 
-#volver:hover {
+#volver:hover,#volver2:hover {
   border: none;
   background-color: #bfbfbf;
 }

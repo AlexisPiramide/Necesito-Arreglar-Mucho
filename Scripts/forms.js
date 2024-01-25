@@ -1,59 +1,60 @@
 document.addEventListener("DOMContentLoaded", mainScript);
 
 function mainScript() {
-    
+    ValidadorEmail()
     const registro = document.getElementById('registro');
     const inicio = document.getElementById('inicio');
 
-    registro.addEventListener("click", submitForm);
-    inicio.addEventListener("click", submitForm);
+    registro.addEventListener("click", registroForm);
+    inicio.addEventListener("click", inicoForm);
 
     const volver = document.getElementById('volver');
+    const volver2 = document.getElementById('volver2');
     const cambio = document.getElementById('cambio');
+    const cambio2 = document.getElementById('cambio2');
 
-    volver.addEventListener("click", submitForm);
-    cambio.addEventListener("click", submitForm);
+    volver.addEventListener("click", volverForm);
+    volver2.addEventListener("click", volverForm);
+    cambio.addEventListener("click", cambioForm);
+    cambio2.addEventListener("click", cambioForm);
     console.log("DOM fully loaded and parsed");
 }
 
-function submitForm(e) {
 
-    console.log("submitForm");
+function registroForm(e){
+    console.log(e)
     e.preventDefault();
 
-    const buttonId = e.target.id;
+    mostrarRegistro();
+}
 
-    if (ValidadorEmail()){
-        console.log("ValidadorEmail");
-    }
+function inicoForm(e){
+    console.log(e)
+    e.preventDefault();
 
-    switch (buttonId) {
-        case 'inicio':
-            mostrarLogin();
-            console.log(buttonId)
-            break;
-        case 'registro':
-            mostrarRegistro();
-            console.log(buttonId)
-            break;
-        case 'volver':
-            mostrarForm();
-            console.log(buttonId)
-            break;
-        case 'cambio':
-            if (document.getElementById("formregistro").style.display === 'block') {
-                mostrarLogin();
-                console.log(buttonId)
-            } else if (document.getElementById("formlogin").style.display === 'block') {
-                mostrarRegistro();
-                console.log(buttonId)
-            }
-            break;
-        default:
-            console.log(buttonId)
-            console.log("Button not recognized");
+    mostrarLogin();
+
+}
+
+function volverForm(e){
+    console.log(e)
+    e.preventDefault();
+
+    mostrarForm();
+}
+
+
+function cambioForm(e){
+    console.log(e)
+    e.preventDefault();
+
+    if (document.getElementById("formregistro").style.display === 'block') {
+        mostrarLogin();
+    } else if (document.getElementById("formlogin").style.display === 'block') {
+        mostrarRegistro();
     }
 }
+
 
 function mostrarLogin() {
     const login = document.getElementById('formlogin');
@@ -85,12 +86,14 @@ function mostrarRegistro() {
     registro.style.display = 'block';
 }
 
-function ValidadorEmail() {
-    const emailInput = document.getElementById("email");
-    emailInput.addEventListener("blur", function () {
-        const email = emailInput.value;
 
+function ValidadorEmail() {
+    let emailInput = document.getElementById("emailforminput");
+
+    emailInput.addEventListener("blur", function (e) {
+        let email = emailInput.value;
         if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            
             this.setCustomValidity("");
         } else {
             this.setCustomValidity("El correo electrónico no es válido");

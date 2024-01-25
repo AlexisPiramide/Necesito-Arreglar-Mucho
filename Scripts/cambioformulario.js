@@ -49,15 +49,18 @@ function mostrarRegistro() {
 
 
 function ValidadorEmail() {
-    let emailInput = document.getElementById("email");
+    let emailInput = document.getElementById("emailforminput");
+    console.log("Pepe")
     emailInput.addEventListener("blur", function () {
         let email = emailInput.value;
-
+        console.log("Pepe2")
         if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
             this.setCustomValidity("");
+            console.log("Pepe3")
         } else {
             this.setCustomValidity("El correo electrónico no es válido");
             this.reportValidity();
+            console.log("Pepe4")
         }
     });
 }
