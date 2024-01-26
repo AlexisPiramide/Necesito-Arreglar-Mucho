@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", mainScript);
 function mainScript() {
 
     const emailInput = document.getElementById("emailforminput");
-   
+
     emailInput.addEventListener("blur", function (e) {
         validarEmail();
     });
@@ -11,38 +11,28 @@ function mainScript() {
     const registro = document.getElementById('registro');
     const inicio = document.getElementById('inicio');
 
-   
-    registro.addEventListener("click", function (e) {
+
+    registro.addEventListener("click", async function (e) {
         e.preventDefault()
         let email = emailInput.value;
         if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-            /**
-             * if(estaenserver){
-             * registroForm()
-             * }else{
-             *  alert("El correo seleccionado no es correcto o ya hay una cuenta vinculada a ella ¿desea iniciar sesion?")
-             * 
-             * }
-             * 
-             * 
-             */
-            registroForm()
+            if (await comprobarEmailEnServidor(email)) {
+                alert("El correo seleccionado no es correcto o ya hay una cuenta vinculada a ella ¿desea iniciar sesion?")
+            } else {
+                registroForm()
+            }
         }
     });
 
-    inicio.addEventListener("click", function (e) {
+    inicio.addEventListener("click",async function (e) {
         e.preventDefault()
         let email = emailInput.value;
         if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-            /**
-             * if(estaenserver){
-             * registroForm()
-             * }else{
-             *  alert("El correo seleccionado no es correcto o existe cuenta relacionada con ella ¿desea crear cuenta?")
-             * 
-             * }
-             */
-            inicoForm()
+            if (await comprobarEmailEnServidor(email)) {    
+                inicioForm()
+            } else {
+                alert("El correo seleccionado no es correcto o ya hay una cuenta vinculada a ella ¿desea crear una cuenta?")
+            }
         }
     });
 
@@ -58,8 +48,35 @@ function mainScript() {
     console.log("DOM fully loaded and parsed");
 }
 
+/**Logica valicacion del correo con el servidor */
 
-function registroForm(e){
+const URL_SERVER = "http://18.213.254.148:3000/";
+/**Hay que meter await y async */
+function comprobarEmailEnServidor(email) {
+    fetch(URL_SERVER + "usuarios")
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                console.log("error")
+                throw new Error("Error de servidor");
+            }
+        })
+        .then(usuarios => {
+            usuarios.forEach(usuario => {
+                if (usuario.correo == email) {
+                    console.log(true)
+                    return true
+                }
+            });
+
+          
+        })
+}
+
+/**Logica cambio de formularios */
+
+function registroForm(e) {
     mostrarRegistro();
     const correoinico = document.getElementById("correoinicio")
     const correoregistro = document.getElementById("correoregistro")
@@ -69,7 +86,7 @@ function registroForm(e){
     correoinico.value = emailforminput;
 }
 
-function inicoForm(e){
+function inicioForm(e) {
     mostrarLogin();
     const correoinico = document.getElementById("correoinicio")
     const correoregistro = document.getElementById("correoregistro")
@@ -79,13 +96,13 @@ function inicoForm(e){
     correoinico.value = emailforminput;
 }
 
-function volverForm(e){
+function volverForm(e) {
     e.preventDefault();
     mostrarForm();
 }
 
 
-function cambioForm(e){
+function cambioForm(e) {
     e.preventDefault();
 
     if (document.getElementById("formregistro").style.display === 'block') {
@@ -126,14 +143,17 @@ function mostrarRegistro() {
     registro.style.display = 'block';
 }
 
+/**Logica Validaciones */
+
 function validarEmail() {
     let emailInput = document.getElementById("emailforminput");
 
     let email = emailInput.value;
     if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-       
+
     } else {
         emailInput.setCustomValidity("El correo electrónico no es válido");
         emailInput.reportValidity();
     }
 }
+
