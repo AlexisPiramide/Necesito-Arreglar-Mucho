@@ -31,7 +31,7 @@ function mainScript() {
             if (await comprobarEmailEnServidor(email)) {    
                 inicioForm()
             } else {
-                alert("El correo seleccionado no es correcto o ya hay una cuenta vinculada a ella ¿desea crear una cuenta?")
+                alert("El correo seleccionado no es correcto o no hay ninguna cuenta vinculada a ella ¿desea crear una cuenta?")
             }
         }
     });
@@ -46,32 +46,75 @@ function mainScript() {
     cambio.addEventListener("click", cambioForm);
     cambio2.addEventListener("click", cambioForm);
     console.log("DOM fully loaded and parsed");
+
+
+
+    const passwordlogin = document.getElementById("passwordlogin");
+    const passwordloginbutton = document.getElementById("passwordloginbutton");
+
+    passwordloginbutton.addEventListener("click", async function (e) {
+        e.preventDefault();
+        let contraseña = passwordlogin.value;
+        let email = emailInput.value;
+        let result = await comprobarContraseñaEnServidor(email,contraseña);
+        if (result[[0]]) {
+            sessionStorage.setItem("usuario", result[1]);
+        } else {
+            alert("Contraseña incorrecta")
+        }
+    });
 }
 
 /**Logica valicacion del correo con el servidor */
 
 const URL_SERVER = "http://18.213.254.148:3000/";
-/**Hay que meter await y async */
-function comprobarEmailEnServidor(email) {
-    fetch(URL_SERVER + "usuarios")
-        .then(response => {
-            if (response.ok) {
-                return response.json();
-            } else {
-                console.log("error")
-                throw new Error("Error de servidor");
-            }
-        })
-        .then(usuarios => {
-            usuarios.forEach(usuario => {
-                if (usuario.correo == email) {
-                    console.log(true)
-                    return true
-                }
-            });
 
-          
-        })
+
+async function comprobarEmailEnServidor(email) {
+    try {
+        const response = await fetch(URL_SERVER + "usuarios");
+        if (response.ok) {
+            const usuarios = await response.json();
+            for (const usuario of usuarios) {
+                if (usuario.correo === email) {
+                    console.log(true);
+                    return true;
+                }
+            }
+        } else {
+            console.log("error");
+            throw new Error("Error de servidor");
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+/**Logica valicacion del contraseña con el servidor */
+
+async function comprobarContraseñaEnServidor(email,contraseña) {
+    try {
+        const response = await fetch(URL_SERVER + "usuarios");
+        if (response.ok) {
+            const usuarios = await response.json();
+            for (const usuario of usuarios) {
+                if (usuario.correo === email) {
+                    console.log(true);
+                    if (usuario.contraseña === contraseña) {
+                        console.log(true);
+                        return true;
+                    }
+                    return [true, usuario.nombre_usuario]
+                }
+                
+            }
+        } else {
+            console.log("error");
+            throw new Error("Error de servidor");
+        }
+    } catch (error) {
+        console.error(error);
+    }
 }
 
 /**Logica cambio de formularios */
