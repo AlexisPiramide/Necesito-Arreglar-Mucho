@@ -50,7 +50,6 @@ function mostrarRegistro() {
 
 function ValidadorEmail() {
     let emailInput = document.getElementById("emailforminput");
-    console.log("Pepe")
     emailInput.addEventListener("blur", function () {
         let email = emailInput.value;
         console.log("Pepe2")

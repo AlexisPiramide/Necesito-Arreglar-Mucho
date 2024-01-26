@@ -6,10 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="Style/userforms.css">
+    <link rel="stylesheet" href="Style/fondoanimado.css">
     <script defer src="./Scripts/forms.js"></script>
 </head>
 
 <body>
+ 
     <div class="wrapper">
         <div id="form">
             <form>
@@ -36,18 +38,13 @@
             <form action="#">
                 <div class="field email">
                     <div class="input-area">
-                        <input id="campoemail" type="email" placeholder="Email Address" disabled
-                            value="220240@fppiramide.com">
-                        <i class="icon fas fa-envelope"></i>
-                        <i class="error error-icon fas fa-exclamation-circle"></i>
+                        <input id="correoinicio" type="email" placeholder="Email Address" disabled>
                     </div>
                     <div class="error error-txt">Email can't be blank</div>
                 </div>
                 <div class="field password">
                     <div class="input-area">
                         <input type="password" placeholder="Password">
-                        <i class="icon fas fa-lock"></i>
-                        <i class="error error-icon fas fa-exclamation-circle"></i>
                     </div>
                     <div class="error error-txt">Password can't be blank</div>
                 </div>
@@ -70,17 +67,13 @@
                 </div>
                 <div class="field email">
                     <div class="input-area">
-                        <input type="email" disabled value="220240@fppiramide.com">
-                        <i class="icon fas fa-envelope"></i>
-                        <i class="error error-icon fas fa-exclamation-circle"></i>
+                        <input id="correoregistro" type="email" disabled>
                     </div>
                     <div class="error error-txt">Email can't be blank</div>
                 </div>
                 <div class="field password">
                     <div class="input-area">
                         <input id="password" type="password" placeholder="Password" name="password">
-                        <i class="icon fas fa-lock"></i>
-                        <i class="error error-icon fas fa-exclamation-circle"></i>
                     </div>
                     <div class="error error-txt">Password can't be blank</div>
                 </div>
@@ -88,15 +81,26 @@
                     <div class="input-area">
                         <input id="repetirpassword" type="password" placeholder="Confirm Password"
                             name="confirmPassword">
-                        <i class="icon fas fa-lock"></i>
-                        <i class="error error-icon fas fa-exclamation-circle"></i>
                     </div>
                     <div class="error error-txt">Passwords don't match</div>
                 </div>
-                <div class="pass-txt"><a href="#">¿Olvidaste tu contraseña?</a></div>
                 <input type="submit" value="Registrarse">
             </form>
             <div class="sign-txt">¿Ya tienes una cuenta? <a id="cambio2">Inicia Sesión</a></div>
         </div>
+    </div>
+    <div class="area">
+        <ul class="circles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
     </div>
 </body>

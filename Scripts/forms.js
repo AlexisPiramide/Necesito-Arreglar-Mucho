@@ -1,12 +1,50 @@
 document.addEventListener("DOMContentLoaded", mainScript);
 
 function mainScript() {
-    ValidadorEmail()
+
+    const emailInput = document.getElementById("emailforminput");
+   
+    emailInput.addEventListener("blur", function (e) {
+        validarEmail();
+    });
+
     const registro = document.getElementById('registro');
     const inicio = document.getElementById('inicio');
 
-    registro.addEventListener("click", registroForm);
-    inicio.addEventListener("click", inicoForm);
+   
+    registro.addEventListener("click", function (e) {
+        e.preventDefault()
+        let email = emailInput.value;
+        if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            /**
+             * if(estaenserver){
+             * registroForm()
+             * }else{
+             *  alert("El correo seleccionado no es correcto o ya hay una cuenta vinculada a ella ¿desea iniciar sesion?")
+             * 
+             * }
+             * 
+             * 
+             */
+            registroForm()
+        }
+    });
+
+    inicio.addEventListener("click", function (e) {
+        e.preventDefault()
+        let email = emailInput.value;
+        if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            /**
+             * if(estaenserver){
+             * registroForm()
+             * }else{
+             *  alert("El correo seleccionado no es correcto o existe cuenta relacionada con ella ¿desea crear cuenta?")
+             * 
+             * }
+             */
+            inicoForm()
+        }
+    });
 
     const volver = document.getElementById('volver');
     const volver2 = document.getElementById('volver2');
@@ -22,30 +60,27 @@ function mainScript() {
 
 
 function registroForm(e){
-    console.log(e)
-    e.preventDefault();
-
     mostrarRegistro();
+    const correoregistro = document.getElementById("correoregistro")
+    const emailforminput = document.getElementById("emailforminput").value
+    correoregistro.value = emailforminput;
 }
 
 function inicoForm(e){
-    console.log(e)
-    e.preventDefault();
-
     mostrarLogin();
+    const correoinico = document.getElementById("correoinicio")
+    const emailforminput = document.getElementById("emailforminput").value
 
+    correoinico.value = emailforminput;
 }
 
 function volverForm(e){
-    console.log(e)
     e.preventDefault();
-
     mostrarForm();
 }
 
 
 function cambioForm(e){
-    console.log(e)
     e.preventDefault();
 
     if (document.getElementById("formregistro").style.display === 'block') {
@@ -86,18 +121,14 @@ function mostrarRegistro() {
     registro.style.display = 'block';
 }
 
-
-function ValidadorEmail() {
+function validarEmail() {
     let emailInput = document.getElementById("emailforminput");
 
-    emailInput.addEventListener("blur", function (e) {
-        let email = emailInput.value;
-        if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-            
-            this.setCustomValidity("");
-        } else {
-            this.setCustomValidity("El correo electrónico no es válido");
-            this.reportValidity();
-        }
-    });
+    let email = emailInput.value;
+    if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+       
+    } else {
+        emailInput.setCustomValidity("El correo electrónico no es válido");
+        emailInput.reportValidity();
+    }
 }
