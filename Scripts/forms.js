@@ -61,16 +61,21 @@ function mainScript() {
 
 function registroForm(e){
     mostrarRegistro();
+    const correoinico = document.getElementById("correoinicio")
     const correoregistro = document.getElementById("correoregistro")
     const emailforminput = document.getElementById("emailforminput").value
+
     correoregistro.value = emailforminput;
+    correoinico.value = emailforminput;
 }
 
 function inicoForm(e){
     mostrarLogin();
     const correoinico = document.getElementById("correoinicio")
+    const correoregistro = document.getElementById("correoregistro")
     const emailforminput = document.getElementById("emailforminput").value
 
+    correoregistro.value = emailforminput;
     correoinico.value = emailforminput;
 }
 
