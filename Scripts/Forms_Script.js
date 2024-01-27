@@ -24,11 +24,11 @@ function mainScript() {
         }
     });
 
-    inicio.addEventListener("click",async function (e) {
+    inicio.addEventListener("click", async function (e) {
         e.preventDefault()
         let email = emailInput.value;
         if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-            if (await comprobarEmailEnServidor(email)) {    
+            if (await comprobarEmailEnServidor(email)) {
                 inicioForm()
             } else {
                 alert("El correo seleccionado no es correcto o no hay ninguna cuenta vinculada a ella ¿desea crear una cuenta?")
@@ -56,13 +56,64 @@ function mainScript() {
         e.preventDefault();
         let contraseña = passwordlogin.value;
         let email = emailInput.value;
-        let result = await comprobarContraseñaEnServidor(email,contraseña);
+        let result = await comprobarContraseñaEnServidor(email, contraseña);
         if (result[[0]]) {
             sessionStorage.setItem("usuario", result[1]);
         } else {
             alert("Contraseña incorrecta")
         }
     });
+
+    const passwordregistro = document.getElementById("passwordregistro");
+    const repetirpassword = document.getElementById("repetirpassword");
+    const usuario = document.getElementById("usuario");
+    const passwordregistrobutton = document.getElementById("passwordregistrobutton");
+
+    passwordregistro.addEventListener("blur", ValidadorContraseña);
+    repetirpassword.addEventListener("blur", ValidadorConfirmarContraseña);
+
+
+    passwordregistrobutton.addEventListener("click", async function (e) {
+        e.preventDefault();
+        let contraseña = passwordregistro.value;
+        let email = emailInput.value;
+        let nombre_usuario = usuario.value;
+
+        if (await comprobarUsuarioEnServidor(usuario.value)) {
+            alert("El nombre de usuario ya existe")
+        }
+        else {
+            await añadirUsuario(email, contraseña, nombre_usuario);
+            sessionStorage.setItem("usuario", nombre_usuario);
+        }
+    });
+}
+
+/**Logica añadir usuario al server */
+
+async function añadirUsuario(email, contraseña, nombre_usuario) {
+
+    try {
+        const response = await fetch(URL_SERVER + "usuarios", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                correo: email,
+                contraseña: contraseña,
+                nombre_usuario: nombre_usuario
+            }),
+        });
+        if (response.ok) {
+            const usuario = await response.json();
+            console.log(usuario);
+            return usuario;
+        }
+    }
+    catch (error) {
+        console.error(error);
+    }
 }
 
 /**Logica valicacion del correo con el servidor */
@@ -92,7 +143,7 @@ async function comprobarEmailEnServidor(email) {
 
 /**Logica valicacion del contraseña con el servidor */
 
-async function comprobarContraseñaEnServidor(email,contraseña) {
+async function comprobarContraseñaEnServidor(email, contraseña) {
     try {
         const response = await fetch(URL_SERVER + "usuarios");
         if (response.ok) {
@@ -106,7 +157,29 @@ async function comprobarContraseñaEnServidor(email,contraseña) {
                     }
                     return [true, usuario.nombre_usuario]
                 }
-                
+
+            }
+        } else {
+            console.log("error");
+            throw new Error("Error de servidor");
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+/**Logica valicacion del registro con el servidor */
+
+async function comprobarUsuarioEnServidor(usuario) {
+    try {
+        const response = await fetch(URL_SERVER + "usuarios");
+        if (response.ok) {
+            const usuarios = await response.json();
+            for (const usuario of usuarios) {
+                if (usuario.nombre_usuario === usuario) {
+                    console.log(true);
+                    return true;
+                }
             }
         } else {
             console.log("error");
@@ -200,3 +273,76 @@ function validarEmail() {
     }
 }
 
+
+
+function ValidadorContraseña() {
+    let passwordInput = document.getElementById("password");
+
+    passwordInput.addEventListener("input", function () {
+        let password = this.value;
+        let mensaje = GeneradorMensaje(password);
+
+        if (mensaje === "") {
+            this.setCustomValidity("");
+        } else {
+            this.setCustomValidity("La contraseña debe contener al menos : " + mensaje);
+            this.reportValidity();
+        }
+    });
+}
+
+function GeneradorMensaje(Contraseña) {
+    let validacion = true;
+    let mensaje = "";
+
+    if (Contraseña.length < 8) {
+        mensaje += "8 caracteres";
+        validacion = false;
+    }
+
+    if (!/[A-Z]/.test(Contraseña)) {
+        if (!validacion) {
+            mensaje += ", 1 letra Mayuscula";
+        } else {
+            mensaje += "1 letra Mayuscula";
+        }
+        validacion = false;
+    }
+
+    if (!/\d/.test(Contraseña)) {
+        if (!validacion) {
+            mensaje += ", 1 Numero";
+        } else {
+            mensaje += "1 Numero";
+        }
+        validacion = false;
+    }
+
+    if (!/[!@#$%^&*(),.?":{}|<>]/.test(Contraseña)) {
+        if (!validacion) {
+            mensaje += ", 1 Caracter Especial (#$%^&...).";
+        } else {
+            mensaje += "1 Caracter Especial (#$%^&...).";
+        }
+        validacion = false;
+    }
+
+    return mensaje;
+}
+
+
+function ValidadorConfirmarContraseña() {
+    let passwordInput = document.getElementById("password");
+    let repetirPasswordInput = document.getElementById("repetirpassword");
+    repetirPasswordInput.addEventListener("blur", function () {
+        let password = passwordInput.value;
+        let confirmpassword = repetirPasswordInput.value;
+
+        if (password == confirmpassword) {
+            this.setCustomValidity("");
+        } else {
+            this.setCustomValidity("La contraseña no coincide");
+            this.reportValidity();
+        }
+    });
+}
