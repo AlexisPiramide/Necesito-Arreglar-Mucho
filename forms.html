@@ -8,7 +8,7 @@
     <title>Zona Usuarios</title>
     <link rel="stylesheet" href="Style/Form_Style.css">
     <link rel="stylesheet" href="Style/Animated_Form_Background_Style.css">
-    <script defer src="./Scripts/forms.js"></script>
+    <script defer src="./Scripts/Forms_Script.js"></script>
 </head>
 
 <body>
@@ -56,7 +56,7 @@
             <form action="#">
                 <div class="field">
                     <div class="input-area">
-                        <input type="text" placeholder="Usuario" name="usuario">
+                        <input id="usuario" type="text" placeholder="Usuario" name="usuario">
                     </div>
                 </div>
                 <div class="field email">
@@ -66,7 +66,7 @@
                 </div>
                 <div class="field password">
                     <div class="input-area">
-                        <input id="password" type="password" placeholder="Password" name="password">
+                        <input id="passwordregistro" type="password" placeholder="Password" name="password">
                     </div>       
                 </div>
                 <div class="field password">
@@ -74,7 +74,7 @@
                         <input id="repetirpassword" type="password" placeholder="Confirm Password" name="confirmPassword">
                     </div>
                 </div>
-                <input type="submit" value="Registrarse">
+                <input id="passwordregistrobutton" type="submit" value="Registrarse">
             </form>
             <div class="sign-txt">¿Ya tienes una cuenta? <a id="cambio2">Inicia Sesión</a></div>
         </div>

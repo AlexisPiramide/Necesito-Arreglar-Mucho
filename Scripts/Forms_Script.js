@@ -276,7 +276,7 @@ function validarEmail() {
 
 
 function ValidadorContraseña() {
-    let passwordInput = document.getElementById("password");
+    let passwordInput = document.getElementById("passwordregistro");
 
     passwordInput.addEventListener("input", function () {
         let password = this.value;
@@ -332,7 +332,7 @@ function GeneradorMensaje(Contraseña) {
 
 
 function ValidadorConfirmarContraseña() {
-    let passwordInput = document.getElementById("password");
+    let passwordInput = document.getElementById("passwordregistro");
     let repetirPasswordInput = document.getElementById("repetirpassword");
     repetirPasswordInput.addEventListener("blur", function () {
         let password = passwordInput.value;

@@ -78,35 +78,9 @@ form .field.valid input{
   transform: translateY(-50%);
 }
 
-.input-area .icon{
-  left: 15px;
-  color: #bfbfbf;
-  transition: color 0.2s ease;
-}
-
-.input-area .error-icon{
-  right: 15px;
-  color: #dc3545;
-}
-
-form input:focus ~ .icon,
-form .field.valid .icon{
-  color: #5372F0;
-}
-
 form input::placeholder{
   color: #bfbfbf;
   font-size: 17px;
-}
-
-form .field .error-txt{
-  color: #dc3545;
-  text-align: left;
-  margin-top: 5px;
-}
-
-form .field .error{
-  display: none;
 }
 
 form .pass-txt{
