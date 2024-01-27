@@ -8,18 +8,16 @@
     <title>Zona Usuarios</title>
     <link rel="stylesheet" href="Style/Form_Style.css">
     <link rel="stylesheet" href="Style/Animated_Form_Background_Style.css">
-    <script defer src="./Scripts/Forms_Script.js"></script>
+    <script defer src="./Scripts/forms.js"></script>
 </head>
 
 <body>
-
     <div class="wrapper">
         <div id="form">
             <form>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input id="emailforminput" autofocus="" type="email" name="email" placeholder="email@example.com"
-                        required="required">
+                    <input id="emailforminput" autofocus="" type="email" name="email" placeholder="email@example.com" required="required">
                 </div>
                 <div class="form-group">
                     <button id="registro" type="submit" class="button">
@@ -39,95 +37,60 @@
             <form action="#">
                 <div class="field email">
                     <div class="input-area">
-                        <input id="correoinicio" type="email">
+                        <input id="correoinicio" type="email" placeholder="Email Address" disabled>
                     </div>
                 </div>
+                <div class="field password">
+                    <div class="input-area">
+                        <input id="passwordlogin" type="password" placeholder="Password">
+                    </div>
+                </div>
+                <div class="pass-txt"><a href="#">¿Olvidaste tu contraseña?</a></div>
+                <input id="passwordloginbutton" type="submit" value="Login">
             </form>
+            <div class="sign-txt">¿Nuevo Usuario? <a id="cambio">Registrate</a></div>
         </div>
-        <div class="wrapper">
-            <div id="form">
-                <form>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input id="emailforminput" autofocus="" type="email" name="email"
-                            placeholder="email@example.com" required="required">
+        <div id="formregistro">
+            <button id="volver2"><img src="../Img/Volver.png"></button>
+            <header>Registro</header>
+            <form action="#">
+                <div class="field">
+                    <div class="input-area">
+                        <input type="text" placeholder="Usuario" name="usuario">
                     </div>
-                    <div class="form-group">
-                        <button id="registro" type="submit" class="button">
-                            <span>Registro nuevos usuarios</span>
-                        </button>
+                </div>
+                <div class="field email">
+                    <div class="input-area">
+                        <input id="correoregistro" type="email" disabled>
                     </div>
-                    <div class="form-group">
-                        <button id="inicio" type="submit" class="button">
-                            <span>Inicio de sesion con Email</span>
-                        </button>
+                </div>
+                <div class="field password">
+                    <div class="input-area">
+                        <input id="password" type="password" placeholder="Password" name="password">
+                    </div>       
+                </div>
+                <div class="field password">
+                    <div class="input-area">
+                        <input id="repetirpassword" type="password" placeholder="Confirm Password" name="confirmPassword">
                     </div>
-                </form>
-            </div>
-            <div id="formlogin">
-                <button id="volver"><img src="../Img/Volver.png"></button>
-                <header>Inicio Sesion</header>
-                <form action="#">
-                    <div class="field email">
-                        <div class="input-area">
-                            <input id="correoinicio" type="email" placeholder="Email Address" disabled>
-                        </div>
-                    </div>
-                    <div class="field password">
-                        <div class="input-area">
-                            <input id="passwordlogin" type="password" placeholder="Password">
-                        </div>
-                    </div>
-                    <div class="pass-txt"><a href="#">¿Olvidaste tu contraseña?</a></div>
-                    <input id="passwordloginbutton" type="submit" value="Login">
-                </form>
-                <div class="sign-txt">¿Nuevo Usuario? <a id="cambio">Registrate</a></div>
-            </div>
-            <div id="formregistro">
-                <button id="volver2"><img src="../Img/Volver.png"></button>
-                <header>Registro</header>
-                <form action="#">
-                    <div class="field">
-                        <div class="input-area">
-                            <input id="usuario" type="text" placeholder="Usuario" name="usuario">
-                        </div>
-                    </div>
-                    <div class="field email">
-                        <div class="input-area">
-                            <input id="correoregistro" type="email" disabled>
-                        </div>
-                    </div>
-                    <div class="field password">
-                        <div class="input-area">
-                            <input id="passwordregistro" type="password" placeholder="Password" name="password">
-                        </div>
-                    </div>
-                    <div class="field password">
-                        <div class="input-area">
-                            <input id="repetirpassword" type="password" placeholder="Confirm Password"
-                                name="confirmPassword">
-                        </div>
-                    </div>
-                    <input type="submit" value="Registrarse">
-                </form>
-                <div class="sign-txt">¿Ya tienes una cuenta? <a id="cambio2">Inicia Sesión</a></div>
-            </div>
-        </div>
-        <div class="area">
-            <ul class="circles">
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
+                </div>
+                <input type="submit" value="Registrarse">
+            </form>
+            <div class="sign-txt">¿Ya tienes una cuenta? <a id="cambio2">Inicia Sesión</a></div>
         </div>
     </div>
+    <div class="area">
+        <ul class="circles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
 </body>
-
-</html>
