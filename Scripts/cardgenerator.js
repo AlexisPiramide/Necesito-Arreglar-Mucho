@@ -7,9 +7,10 @@ const URL_SERVER = "http://18.213.254.148:3000/";
 document.addEventListener("DOMContentLoaded", mainScript);
 
 async function mainScript() {
+    loadUserZone();
     const data = await fetchDataFromDatabase();
     generateCards(data);
-    
+
 }
 
 
@@ -23,6 +24,15 @@ async function fetchDataFromDatabase() {
     }
 }
 
+function loadUserZone() {
+    const user = document.getElementById("texto-usuario");
+    const usuario = sessionStorage.getItem("usuario");
+    if (usuario != null) {
+        user.innerHTML = usuario;
+    } else {
+        user.innerHTML = "User Zone";
+    }
+}
 
 
 function generateCards(data) {
