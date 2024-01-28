@@ -9,31 +9,9 @@ document.addEventListener("DOMContentLoaded", mainScript);
 async function mainScript() {
     const data = await fetchDataFromDatabase();
     generateCards(data);
+    
 }
 
-
-const data = [
-    {
-        imageSrc: "https://t2.ea.ltmcdn.com/es/posts/8/6/7/la_alimentacion_del_pinguino_20768_600.jpg",
-        itemName: "Pinguino",
-        itemDescription: "Description 1"
-    },
-    {
-        imageSrc: "https://upload.wikimedia.org/wikipedia/commons/0/09/Polar_Bear_-_Alaska.jpg",
-        itemName: "Oso Polar",
-        itemDescription: "Description 2"
-    },
-    {
-        imageSrc: "https://static.nationalgeographic.es/files/styles/image_3200/public/surface-narwhal-canada.jpg?w=1600&h=900",
-        itemName: "Narval",
-        itemDescription: "Description 3"
-    },
-    {
-        imageSrc: "https://www.fundacionaquae.org/wp-content/uploads/2019/09/ballena.jpg",
-        itemName: "Ballena",
-        itemDescription: "Description 4"
-    }
-];
 
 async function fetchDataFromDatabase() {
     try {
@@ -76,3 +54,19 @@ function generateCards(data) {
 }
 
 
+document.getElementById('texto-buscar').addEventListener('blur', filterCards);
+
+function filterCards() {
+    console.log("texto-buscar").value;
+    const searchText = document.getElementById('texto-buscar').value.toLowerCase();
+    const cards = document.getElementsByClassName('card');
+
+    for (let i = 0; i < cards.length; i++) {
+        const cardTitle = cards[i].querySelector('h3').textContent.toLowerCase();
+        if (cardTitle.includes(searchText)) {
+            cards[i].style.display = 'block';
+        } else {
+            cards[i].style.display = 'none';
+        }
+    }
+}
