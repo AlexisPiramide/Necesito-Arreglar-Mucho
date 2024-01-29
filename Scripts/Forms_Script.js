@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", mainScript);
 
 function mainScript() {
-
     const emailInput = document.getElementById("emailforminput");
 
     emailInput.addEventListener("blur", function (e) {
@@ -59,6 +58,7 @@ function mainScript() {
         let result = await comprobarContraseñaEnServidor(email, contraseña);
         if (result[[0]]) {
             sessionStorage.setItem("usuario", result[1]);
+            window.location='/articulos.html'
         } else {
             alert("Contraseña incorrecta")
         }
@@ -85,6 +85,7 @@ function mainScript() {
         else {
             await añadirUsuario(email, contraseña, nombre_usuario);
             sessionStorage.setItem("usuario", nombre_usuario);
+            window.location='/articulos.html'
         }
     });
 }

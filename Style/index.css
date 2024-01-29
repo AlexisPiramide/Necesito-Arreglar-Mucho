@@ -18,31 +18,6 @@ nav {
     padding: 0 20px;
 }
 
-.nav-logo {
-    color: #fff;
-    font-size: 24px;
-    font-weight: bold;
-}
-
-.nav-menu {
-    list-style: none;
-    display: flex;
-}
-
-.nav-menu li {
-    margin-right: 20px;
-}
-
-.nav-menu li a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 16px;
-}
-
-.nav-menu li a:hover {
-    color: #00B4CC;
-}
-
 .home-button {
     color: #fff;
     background-color: transparent;

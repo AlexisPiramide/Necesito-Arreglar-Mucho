@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/Img/icono_añadir.png">
+    <title>Nuevo Articulo</title>
+    <link rel="stylesheet" href="Style/nuevo.css">
+    <script defer src="/Scripts/añadirArticulo.js"></script>
+</head>
+
+<body>
+    <nav>
+        <button id="botonarticulos" class="home-button">Articulos</button>
+        <button id="botonnuevo" class="home-button" >Nuevo Articulo</button>
+        <button id="botonfromularios"  class="user-zone-button">
+            <div class="user-zone">
+                <img src="/Img/icono_Forms.png" alt="User Image">
+                <h2 id="texto-usuario"></h2>
+            </div>
+        </button>
+    </nav>
+    <form>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+
+        <label for="imagen">Imagen:</label>
+        <input type="imagen" id="imagen" name="imagen" required>
+
+        <label for="mensaje">Mensaje:</label>
+        <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
+
+        <button id="añadirArticulo" type="submit">Enviar</button>
+    </form>
+</body>
+
+</html>

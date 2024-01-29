@@ -58,11 +58,16 @@ function generateCards(data) {
         deleteButton.textContent = "Delete";
         card.appendChild(deleteButton);
 
+        const id = document.createElement("div");
+        id.textContent = item.id;
+        id.style.display = "none"; 
+        card.appendChild(id);
+
         container.appendChild(card);
     });
 }
 
-const textobuscar =  document.getElementById('textobuscar')
+const textobuscar = document.getElementById('textobuscar')
 textobuscar.addEventListener('input', filterCards);
 
 function filterCards() {
@@ -80,9 +85,56 @@ function filterCards() {
     }
 }
 
+const contenedor = document.getElementById("card-container");
 
-function borrarArticulo(){
-    e.preventDefault()
+contenedor.addEventListener("click", function (e) {
+    if (e.target.tagName === "BUTTON" && e.target.textContent === "Delete") {
+        borrarArticulo(e);
+    }
+});
+
+async function borrarArticulo(e) {
+    e.preventDefault();
+
+    const card = e.target.closest(".card");
+
+    const articleId = card.querySelector("div").textContent;
+
+    try {
+        const response = await fetch(URL_SERVER + "articulos/" + articleId, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+
+        if (response.ok) {
+            card.remove();
+        } else {
+            console.error("Failed to delete article");
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}
 
 
+const botonarticulos = document.getElementById("botonarticulos");
+const botonnuevo = document.getElementById("botonnuevo");
+const botonfromularios = document.getElementById("botonfromularios");
+
+botonarticulos.addEventListener("click", cambiarbotonarticulos);
+botonnuevo.addEventListener("click", cambiarbotonnuevo);
+botonfromularios.addEventListener("click", cambiarbotonfromularios);
+
+function cambiarbotonarticulos() {
+    window.location = '/articulos.html';
+}
+
+function cambiarbotonnuevo() {
+    window.location = '/nuevo.html';
+}
+
+function cambiarbotonfromularios() {
+    window.location = '/forms.html';
 }

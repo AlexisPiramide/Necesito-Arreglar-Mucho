@@ -31,10 +31,10 @@
                 </div>
             </form>
         </div>
-        <div id="formlogin">
+        <div id="formlogin" method="post" action="/articulos.html">
             <button id="volver"><img src="../Img/Volver.png"></button>
             <header>Inicio Sesion</header>
-            <form action="#">
+            <form action="/articulos.html">
                 <div class="field email">
                     <div class="input-area">
                         <input id="correoinicio" type="email" placeholder="Email Address" disabled>
@@ -48,9 +48,8 @@
                 <div class="pass-txt"><a href="#">¿Olvidaste tu contraseña?</a></div>
                 <input id="passwordloginbutton" type="submit" value="Login">
             </form>
-            <div class="sign-txt">¿Nuevo Usuario? <a id="cambio">Registrate</a></div>
         </div>
-        <div id="formregistro">
+        <div id="formregistro" method="post" action="/articulos.html">
             <button id="volver2"><img src="../Img/Volver.png"></button>
             <header>Registro</header>
             <form action="#">
@@ -76,7 +75,6 @@
                 </div>
                 <input id="passwordregistrobutton" type="submit" value="Registrarse">
             </form>
-            <div class="sign-txt">¿Ya tienes una cuenta? <a id="cambio2">Inicia Sesión</a></div>
         </div>
     </div>
     <div class="area">
