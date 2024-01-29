@@ -10,7 +10,6 @@ async function mainScript() {
     loadUserZone();
     const data = await fetchDataFromDatabase();
     generateCards(data);
-
 }
 
 
@@ -63,12 +62,12 @@ function generateCards(data) {
     });
 }
 
-
-document.getElementById('texto-buscar').addEventListener('blur', filterCards);
+const textobuscar =  document.getElementById('textobuscar')
+textobuscar.addEventListener('input', filterCards);
 
 function filterCards() {
-    console.log("texto-buscar").value;
-    const searchText = document.getElementById('texto-buscar').value.toLowerCase();
+
+    const searchText = textobuscar.value.toLowerCase();
     const cards = document.getElementsByClassName('card');
 
     for (let i = 0; i < cards.length; i++) {
@@ -79,4 +78,11 @@ function filterCards() {
             cards[i].style.display = 'none';
         }
     }
+}
+
+
+function borrarArticulo(){
+    e.preventDefault()
+
+
 }
