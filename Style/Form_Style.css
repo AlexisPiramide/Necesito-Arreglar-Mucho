@@ -51,6 +51,14 @@ form .field .input-area{
   position: relative;
 }
 
+.hidelabel {
+  visibility: hidden;
+  width: 1px;
+  height: 1px;
+  font-size: 1px;
+  padding-bottom: 2px;
+}
+
 form input{
   width: 100%;
   height: 100%;

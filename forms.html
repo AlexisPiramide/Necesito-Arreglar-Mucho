@@ -16,7 +16,7 @@
         <div id="form">
             <form>
                 <div class="form-group">
-                    <label for="email">Email</label>
+                    <label for="emailforminput">Email</label>
                     <input id="emailforminput" autofocus="" type="email" name="email" placeholder="email@example.com" required="required">
                 </div>
                 <div class="form-group">
@@ -32,16 +32,18 @@
             </form>
         </div>
         <div id="formlogin" method="post" action="/articulos.html">
-            <button id="volver"><img src="../Img/Volver.png"></button>
+            <button id="volver"><img src="../Img/Volver.png" alt="Volver a escribir correo"></button>
             <header>Inicio Sesion</header>
             <form action="/articulos.html">
                 <div class="field email">
                     <div class="input-area">
+                        <label for="correoinicio" class="hidelabel">Email Address</label>
                         <input id="correoinicio" type="email" placeholder="Email Address" disabled>
                     </div>
                 </div>
                 <div class="field password">
                     <div class="input-area">
+                        <label for="passwordlogin" class="hidelabel">Password</label>
                         <input id="passwordlogin" type="password" placeholder="Password">
                     </div>
                 </div>
@@ -50,26 +52,30 @@
             </form>
         </div>
         <div id="formregistro" method="post" action="/articulos.html">
-            <button id="volver2"><img src="../Img/Volver.png"></button>
+            <button id="volver2"><img src="../Img/Volver.png" alt="Volver a escribir correo"></button>
             <header>Registro</header>
             <form action="#">
                 <div class="field">
                     <div class="input-area">
+                        <label for="usuario" class="hidelabel">Usuario</label>
                         <input id="usuario" type="text" placeholder="Usuario" name="usuario">
                     </div>
                 </div>
                 <div class="field email">
                     <div class="input-area">
+                        <label for="correoregistro" class="hidelabel">Email</label>
                         <input id="correoregistro" type="email" disabled>
                     </div>
                 </div>
                 <div class="field password">
                     <div class="input-area">
+                        <label for="passwordregistro" class="hidelabel">Password</label>
                         <input id="passwordregistro" type="password" placeholder="Password" name="password">
                     </div>       
                 </div>
                 <div class="field password">
                     <div class="input-area">
+                        <label for="repetirpassword" class="hidelabel">Confirm Password</label>
                         <input id="repetirpassword" type="password" placeholder="Confirm Password" name="confirmPassword">
                     </div>
                 </div>
@@ -77,6 +83,7 @@
             </form>
         </div>
     </div>
+    
     <div class="area">
         <ul class="circles">
             <li></li>

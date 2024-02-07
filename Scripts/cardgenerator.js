@@ -40,18 +40,20 @@ function generateCards(data) {
     data.forEach(item => {
         const card = document.createElement("div");
         card.classList.add("card");
+        card.setAttribute("aria-label", "Item Card");
 
         const image = document.createElement("img");
         image.src = item.imageSrc;
-        image.alt = "Item Image";
         card.appendChild(image);
 
         const itemName = document.createElement("h3");
-        itemName.textContent = item.itemName;
+        itemName.textContent = item.itemName; 
+        itemName.setAttribute("aria-label", item.itemName);
         card.appendChild(itemName);
 
         const itemDescription = document.createElement("p");
         itemDescription.textContent = item.itemDescription;
+        itemDescription.setAttribute("aria-label", "Description");
         card.appendChild(itemDescription);
 
         const deleteButton = document.createElement("button");
@@ -60,10 +62,12 @@ function generateCards(data) {
 
         const id = document.createElement("div");
         id.textContent = item.id;
-        id.style.display = "none"; 
+        id.style.display = "none";
+        id.setAttribute("aria-label", "Item ID");
         card.appendChild(id);
 
         container.appendChild(card);
+
     });
 }
 
