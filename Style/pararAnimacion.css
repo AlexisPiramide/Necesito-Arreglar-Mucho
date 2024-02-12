@@ -10,8 +10,15 @@
     font-size: 16px;
     margin-top: 20px;
     transition: background-color 0.3s ease;
-  }
-  
-  #toggleAnimation:hover {
+}
+
+#toggleAnimation:hover {
     background-color: #bfbfbf;
-  }
+}
+
+
+@media (prefers-reduced-motion) {
+    #toggleAnimation {
+        visibility: hidden;
+    }
+}

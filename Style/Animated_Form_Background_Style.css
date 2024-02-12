@@ -130,3 +130,9 @@
     }
 
 }
+
+@media (prefers-reduced-motion) {
+    #animacionburbujascuadradas {
+        visibility: hidden;
+    }
+}
