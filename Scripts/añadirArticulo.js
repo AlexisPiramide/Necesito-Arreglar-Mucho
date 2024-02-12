@@ -21,7 +21,7 @@ boton.addEventListener("click", async function (e) {
     window.location = '/articulos.html';
 });
 
-const URL_SERVER = "http://18.213.254.148:3000/";
+const URL_SERVER = "http://52.87.217.52:3000/";
 
 async function añadirArticulo() {
     let nombre = document.getElementById("nombre").value;

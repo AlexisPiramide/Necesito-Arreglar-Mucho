@@ -119,7 +119,7 @@ async function añadirUsuario(email, contraseña, nombre_usuario) {
 
 /**Logica valicacion del correo con el servidor */
 
-const URL_SERVER = "http://18.213.254.148:3000/";
+const URL_SERVER = "http://52.87.217.52:3000/";
 
 
 async function comprobarEmailEnServidor(email) {

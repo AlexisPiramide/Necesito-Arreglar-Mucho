@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", mainScript);
 
 
-const URL_SERVER = "http://18.213.254.148:3000/";
+const URL_SERVER = "http://52.87.217.52:3000/";
 
 
 document.addEventListener("DOMContentLoaded", mainScript);
@@ -40,8 +40,6 @@ function generateCards(data) {
     data.forEach(item => {
         const card = document.createElement("div");
         card.classList.add("card");
-        card.setAttribute("aria-label", "Item Card");
-        card.setAttribute("tabindex",0);
         const image = document.createElement("img");
         image.src = item.imageSrc;
         card.appendChild(image);
@@ -54,12 +52,12 @@ function generateCards(data) {
 
         const itemDescription = document.createElement("p");
         itemDescription.textContent = item.itemDescription;
-        itemDescription.setAttribute("aria-label", "Description");
+        itemDescription.setAttribute("aria-label", item.itemDescription);
         itemDescription.setAttribute("tabindex",0);
         card.appendChild(itemDescription);
 
         const deleteButton = document.createElement("button");
-        deleteButton.textContent = "Delete";
+        deleteButton.textContent = "Eliminar Articulo";
         deleteButton.setAttribute("tabindex",0);
         card.appendChild(deleteButton);
 
