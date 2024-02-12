@@ -42,8 +42,6 @@ function mainScript() {
 
     volver.addEventListener("click", volverForm);
     volver2.addEventListener("click", volverForm);
-    cambio.addEventListener("click", cambioForm);
-    cambio2.addEventListener("click", cambioForm);
     console.log("DOM fully loaded and parsed");
 
 
@@ -218,16 +216,6 @@ function volverForm(e) {
     mostrarForm();
 }
 
-
-function cambioForm(e) {
-    e.preventDefault();
-
-    if (document.getElementById("formregistro").style.display === 'block') {
-        mostrarLogin();
-    } else if (document.getElementById("formlogin").style.display === 'block') {
-        mostrarRegistro();
-    }
-}
 
 
 function mostrarLogin() {
