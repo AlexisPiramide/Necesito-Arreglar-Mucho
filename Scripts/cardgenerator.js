@@ -41,7 +41,7 @@ function generateCards(data) {
         const card = document.createElement("div");
         card.classList.add("card");
         card.setAttribute("aria-label", "Item Card");
-
+        card.setAttribute("tabindex",0);
         const image = document.createElement("img");
         image.src = item.imageSrc;
         card.appendChild(image);
@@ -49,21 +49,23 @@ function generateCards(data) {
         const itemName = document.createElement("h3");
         itemName.textContent = item.itemName; 
         itemName.setAttribute("aria-label", item.itemName);
+        itemName.setAttribute("tabindex",0);
         card.appendChild(itemName);
 
         const itemDescription = document.createElement("p");
         itemDescription.textContent = item.itemDescription;
         itemDescription.setAttribute("aria-label", "Description");
+        itemDescription.setAttribute("tabindex",0);
         card.appendChild(itemDescription);
 
         const deleteButton = document.createElement("button");
         deleteButton.textContent = "Delete";
+        deleteButton.setAttribute("tabindex",0);
         card.appendChild(deleteButton);
 
         const id = document.createElement("div");
         id.textContent = item.id;
         id.style.display = "none";
-        id.setAttribute("aria-label", "Item ID");
         card.appendChild(id);
 
         container.appendChild(card);
