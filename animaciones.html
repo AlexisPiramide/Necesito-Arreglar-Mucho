@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Articulos</title>
+  <link rel="stylesheet" href="Style/index.css">
+  <link rel="stylesheet" href="Style/animaciones.css">
+  <script defer src="/Scripts/animaciones.js"></script>
+
+  <script defer src="/Scripts/nav.js"></script>
+</head>
+
+<body>
+  <nav>
+    <button id="botonarticulos" class="home-button">Articulos</button>
+    <button id="botonnuevo" class="home-button">Nuevo Articulo</button>
+    <button id="botonanimaciones" class="home-button">Animaciones</button>
+    <button id="botonfromularios" class="user-zone-button">
+      <div class="user-zone">
+        <img src="/Img/icono_Forms.png" aria-hidden="true" alt="imagen usuario">
+        <h2 id="texto-usuario"></h2>
+      </div>
+    </button>
+  </nav>
+  <div id="segment1">
+    <div class="slideshow-container">
+      <div class="mySlides fade">
+        <div class="numbertext">1 / 3</div>
+        <img src="img/slider/slider1.png" style="width:100%">
+      </div>
+
+      <div class="mySlides fade">
+        <div class="numbertext">2 / 3</div>
+        <img src="img/slider/slider2.png" style="width:100%">
+      </div>
+
+      <div class="mySlides fade">
+        <div class="numbertext">3 / 3</div>
+        <img src="img/slider/slider1.png" style="width:100%">
+      </div>
+    </div>
+  </div>
+
+  <div id="segment2">
+    <div id="carta-mitad">
+      <h2>We have no games</h2>
+      <p>So we are gonna play 47 World Premieres because you guys like shity indies, don't you?</p>
+    </div>
+    <div id="carta-mitad">
+      <!-- No he podido exportar a ogv en mi progama de edicion de video por lo que he puesto un .avi-->
+      <video width="560" height="315" title="YouTube video player" frameborder="0"
+        allow="accelerometer; autoplay; loop; muted; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen controls>
+        <source src="video/Loop.mp4" type="video/mp4">
+        <source src="video/Loop.avi" type="video/x-msvideo">
+        <source src="video/Loop.webm" type="video/webm">
+      </video>
+    </div>
+  </div>
+
+  <div id="segment3">
+    <div>
+      <div id="cartapequeña">
+        <img src="https://i.ytimg.com/vi/_KeY8lSwsfo/maxresdefault.jpg">
+        <h2>Some dude actualy came with armor</h2>
+      </div>
+    </div>
+    <div id="cartapequeña">
+      <img src="https://ranierigaming.agency/wp-content/uploads/2022/12/bill-clinton-kid-the-game-awards-2022.webp">
+      <h2>We have no actual security</h2>
+    </div>
+    <div id="cartapequeña">
+      <img src="https://pbs.twimg.com/media/E8eEo_BWUAMqbf4.jpg">
+      <h2>Buy your own award here</h2>
+    </div>
+  </div>
+  <div id="segment4">
+    <h2>Listen to our Podcast with more World Premieres</h2>
+    <audio controls>
+      <source src="audio/Destiny MP3.mp3" type="audio/mp3">
+      <source src="audio/Destiny OGG.ogg" type="audio/ogg">
+      <source src="audio/Destiny WAV.wav" type="audio/wav">
+    </audio>
+  </div>
+  <footer>
+
+  </footer>
+</body>
+
+</html>

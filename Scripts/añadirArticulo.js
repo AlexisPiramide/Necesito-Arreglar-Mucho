@@ -49,23 +49,3 @@ async function añadirArticulo() {
         console.error(error);
     }
 }
-
-const botonarticulos = document.getElementById("botonarticulos");
-const botonnuevo = document.getElementById("botonnuevo");
-const botonfromularios = document.getElementById("botonfromularios");
-
-botonarticulos.addEventListener("click", cambiarbotonarticulos);
-botonnuevo.addEventListener("click", cambiarbotonnuevo);
-botonfromularios.addEventListener("click", cambiarbotonfromularios);
-
-function cambiarbotonarticulos() {
-    window.location = '/articulos.html';
-}
-
-function cambiarbotonnuevo() {
-    window.location = '/nuevo.html';
-}
-
-function cambiarbotonfromularios() {
-    window.location = '/forms.html';
-}
