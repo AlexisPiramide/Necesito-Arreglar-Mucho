@@ -18,17 +18,18 @@ function boton() {
 
 function reanudadanimacion() {
     reanudarLogo();
+    reanudaSlider();
 }
 
 function pararanimacion() {
     paraLogo();
+    pararSlider();
 }
 
 function reanudarLogo(){
     const wingPaths = document.querySelectorAll('#path8, #path9, #path10, #path11, #path12, #path13, #path14, #path15, #path16, #path17');
     const articulatePaths = document.querySelectorAll('#path3, #path4, #path5, #path6, #path7');
-    const all = document.querySelectorAll('#path3, #path4, #path5, #path6, #path7, #path8, #path9, #path10, #path11, #path12,  #path13, #path14, #path15, #path16, #path17 ');
-    
+   
     wingPaths.forEach(path => {
         path.style.animation = 'wing 8s infinite';
     });
@@ -37,17 +38,17 @@ function reanudarLogo(){
         path.style.animation = 'articulate 8s infinite';
     });
 
-    all.forEach(path => {
-        path.style.fill = 'url(#phoenixGradient);';
-    });
-   
+
+    var svg = document.getElementById("logo");
+    const paths = svg.getElementsByTagName("path");
+    for (var i = 0; i < paths.length; i++) {
+        paths[i].style.fill = "url(#inversephoenixGradient)";
+    }
 }
 
 function paraLogo(){
     const wingPaths = document.querySelectorAll('#path8, #path9, #path10, #path11, #path12, #path13, #path14, #path15, #path16, #path17');
     const articulatePaths = document.querySelectorAll('#path3, #path4, #path5, #path6, #path7');
-    const all = document.querySelectorAll('#path1, #path2, #path3, #path4, #path5, #path6, #path7, #path8, #path9, #path10, #path11, #path12,  #path13, #path14, #path15, #path16, #path17 ');
-    
 
     wingPaths.forEach(path => {
         path.style.animation = 'none';
@@ -57,8 +58,38 @@ function paraLogo(){
         path.style.animation = 'none';
     });
 
-    all.forEach(path => {
-        path.style.fill = 'black';
-       
-    });
+    var svg = document.getElementById("logo");
+    const paths = svg.getElementsByTagName("path");
+    for (var i = 0; i < paths.length; i++) {
+        paths[i].style.fill = "#084698";
+    }
 }
+
+
+function reanudaSlider() {
+    let slides = document.getElementsByClassName("mySlidespaused");
+
+    /**Este codigo no tiene ningun sentido
+     * EL JODIDO ARRAY SOLO LE GUSTA SI CAMBIAS LOS DATOS AL REVES
+     * ME HE PEGADO 2 HORAS PARA ESTA TONTERIA PORQUE HACIA LO QUE QUERIA
+     */
+    slides[2].classList.replace("mySlidespaused", "mySlides");
+    slides[1].classList.replace("mySlidespaused", "mySlides");
+    slides[0].classList.replace("mySlidespaused", "mySlides");
+    
+}
+
+function pararSlider() {
+    let slides = document.getElementsByClassName("mySlides");
+    
+    /**Este codigo no tiene ningun sentido
+     * EL JODIDO ARRAY SOLO LE GUSTA SI CAMBIAS LOS DATOS AL REVES
+     * ME HE PEGADO 2 HORAS PARA ESTA TONTERIA PORQUE HACIA LO QUE QUERIA
+     */
+    slides[2].classList.replace("mySlides", "mySlidespaused");
+    slides[1].classList.replace("mySlides", "mySlidespaused");
+    slides[0].classList.replace("mySlides", "mySlidespaused");
+   
+    
+}
+

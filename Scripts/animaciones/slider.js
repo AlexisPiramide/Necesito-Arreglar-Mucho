@@ -12,7 +12,7 @@ function showSlides() {
         slideIndex = 1;
     }
     slides[slideIndex - 1].style.display = "flex";
-    setTimeout(showSlides, 5000); // Cambia la imagen cada 2 segundos (ajusta según tus preferencias)
+    setTimeout(showSlides, 5000);
 }
 
 document.addEventListener("DOMContentLoaded", function () {
