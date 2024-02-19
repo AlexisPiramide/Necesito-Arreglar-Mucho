@@ -1,0 +1,16 @@
+#segment4 {
+    text-align: center;
+    padding: 20px;
+    padding-bottom: 300px;
+}
+
+#segment4 > h2 {
+    color: var(--actual);
+}
+
+audio {
+    margin-top: 10px;
+    width: 100%;
+    max-width: 400px;
+    color: var(--backgroundActual);
+}

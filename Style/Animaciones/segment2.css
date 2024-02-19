@@ -1,0 +1,34 @@
+#segment2 {
+    display: flex;
+}
+
+#carta-mitad {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+
+}
+
+#carta-mitad h2 {
+    font-size: 28px;
+    color: black;
+    margin-bottom: 10px; 
+}
+  
+#carta-mitad p {
+    font-size: 18px;
+    color: black    ;
+    line-height: 1.5; 
+    text-align: center;
+}
+
+#carta-mitad video {
+    width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 40px;
+}

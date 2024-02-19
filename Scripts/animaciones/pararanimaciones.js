@@ -19,11 +19,13 @@ function boton() {
 function reanudadanimacion() {
     reanudarLogo();
     reanudaSlider();
+    turnOnAnimations();
 }
 
 function pararanimacion() {
     paraLogo();
     pararSlider();
+    turnOffAnimations();
 }
 
 function reanudarLogo(){
@@ -73,6 +75,7 @@ function reanudaSlider() {
      * EL JODIDO ARRAY SOLO LE GUSTA SI CAMBIAS LOS DATOS AL REVES
      * ME HE PEGADO 2 HORAS PARA ESTA TONTERIA PORQUE HACIA LO QUE QUERIA
      */
+
     slides[2].classList.replace("mySlidespaused", "mySlides");
     slides[1].classList.replace("mySlidespaused", "mySlides");
     slides[0].classList.replace("mySlidespaused", "mySlides");
@@ -93,3 +96,20 @@ function pararSlider() {
     
 }
 
+
+function turnOffAnimations() {
+    var elements = document.querySelectorAll('#segment2, #segment4, #segment6, #segment3, #segment5');
+
+    elements.forEach(function(element) {
+        element.style.animationName = 'a';
+    });
+}
+
+
+function turnOnAnimations() {
+    var elements = document.querySelectorAll('#segment2, #segment4, #segment6, #segment3, #segment5');
+
+    elements.forEach(function(element) {
+        element.style.animationName = 'aparicionIzquierda';
+    });
+}

@@ -1,0 +1,27 @@
+#segment2,
+#segment4,
+#segment6,
+#segment3,
+#segment5 {
+    view-timeline: --subjectReveal block;
+    animation-timeline: --subjectReveal;
+    position: relative;
+    animation-name: aparicionIzquierda;
+    animation-range: entry 10% contain 100%;
+    animation-fill-mode: both;
+
+}
+
+@keyframes aparicionIzquierda {
+    from {
+        left: -100%;
+    }
+
+    to {
+        left: 0%;
+    }
+}
+
+@keyframes nada {
+
+}
