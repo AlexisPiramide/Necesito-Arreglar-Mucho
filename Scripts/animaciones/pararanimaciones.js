@@ -20,6 +20,7 @@ function reanudadanimacion() {
     reanudarLogo();
     reanudaSlider();
     turnOnAnimations();
+    showSlides();
 }
 
 function pararanimacion() {
@@ -71,11 +72,6 @@ function paraLogo(){
 function reanudaSlider() {
     let slides = document.getElementsByClassName("mySlidespaused");
 
-    /**Este codigo no tiene ningun sentido
-     * EL JODIDO ARRAY SOLO LE GUSTA SI CAMBIAS LOS DATOS AL REVES
-     * ME HE PEGADO 2 HORAS PARA ESTA TONTERIA PORQUE HACIA LO QUE QUERIA
-     */
-
     slides[2].classList.replace("mySlidespaused", "mySlides");
     slides[1].classList.replace("mySlidespaused", "mySlides");
     slides[0].classList.replace("mySlidespaused", "mySlides");
@@ -85,10 +81,6 @@ function reanudaSlider() {
 function pararSlider() {
     let slides = document.getElementsByClassName("mySlides");
     
-    /**Este codigo no tiene ningun sentido
-     * EL JODIDO ARRAY SOLO LE GUSTA SI CAMBIAS LOS DATOS AL REVES
-     * ME HE PEGADO 2 HORAS PARA ESTA TONTERIA PORQUE HACIA LO QUE QUERIA
-     */
     slides[2].classList.replace("mySlides", "mySlidespaused");
     slides[1].classList.replace("mySlides", "mySlidespaused");
     slides[0].classList.replace("mySlides", "mySlidespaused");
@@ -112,4 +104,18 @@ function turnOnAnimations() {
     elements.forEach(function(element) {
         element.style.animationName = 'aparicionIzquierda';
     });
+}
+
+function showSlides() {
+    let i;
+    const slides = document.getElementsByClassName("mySlides");
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) {
+        slideIndex = 1;
+    }
+    slides[slideIndex - 1].style.display = "flex";
+    setTimeout(showSlides, 5000);
 }

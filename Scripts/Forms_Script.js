@@ -37,8 +37,6 @@ function mainScript() {
 
     const volver = document.getElementById('volver');
     const volver2 = document.getElementById('volver2');
-    const cambio = document.getElementById('cambio');
-    const cambio2 = document.getElementById('cambio2');
 
     volver.addEventListener("click", volverForm);
     volver2.addEventListener("click", volverForm);
