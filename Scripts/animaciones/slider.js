@@ -1,4 +1,3 @@
-
 let slideIndex = 0;
 
 function showSlides() {
