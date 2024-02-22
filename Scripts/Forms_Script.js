@@ -1,3 +1,5 @@
+const URL_SERVER = "http://52.87.217.52:3000/";
+
 document.addEventListener("DOMContentLoaded", mainScript);
 
 function mainScript() {
@@ -10,12 +12,11 @@ function mainScript() {
     const registro = document.getElementById('registro');
     const inicio = document.getElementById('inicio');
 
-
     registro.addEventListener("click", async function (e) {
         e.preventDefault()
         let email = emailInput.value;
         if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-            if (await comprobarEmailEnServidor(email)) {
+            if (await comprobarDatosServidor(email,null)) {
                 alert("El correo seleccionado no es correcto o ya hay una cuenta vinculada a ella ¿desea iniciar sesion?")
             } else {
                 registroForm()
@@ -27,7 +28,7 @@ function mainScript() {
         e.preventDefault()
         let email = emailInput.value;
         if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-            if (await comprobarEmailEnServidor(email)) {
+            if (await comprobarDatosServidor(email,null)) {
                 inicioForm()
             } else {
                 alert("El correo seleccionado no es correcto o no hay ninguna cuenta vinculada a ella ¿desea crear una cuenta?")
@@ -43,7 +44,6 @@ function mainScript() {
     console.log("DOM fully loaded and parsed");
 
 
-
     const passwordlogin = document.getElementById("passwordlogin");
     const passwordloginbutton = document.getElementById("passwordloginbutton");
 
@@ -51,10 +51,10 @@ function mainScript() {
         e.preventDefault();
         let contraseña = passwordlogin.value;
         let email = emailInput.value;
-        let result = await comprobarContraseñaEnServidor(email, contraseña);
+        let result = await comprobarDatosServidor(email, contraseña);
         if (result[[0]]) {
             sessionStorage.setItem("usuario", result[1]);
-            window.location='/articulos.html'
+            window.location = '/articulos.html'
         } else {
             alert("Contraseña incorrecta")
         }
@@ -81,7 +81,7 @@ function mainScript() {
         else {
             await añadirUsuario(email, contraseña, nombre_usuario);
             sessionStorage.setItem("usuario", nombre_usuario);
-            window.location='/articulos.html'
+            window.location = '/articulos.html'
         }
     });
 }
@@ -113,67 +113,59 @@ async function añadirUsuario(email, contraseña, nombre_usuario) {
     }
 }
 
-/**Logica valicacion del correo con el servidor */
+/**Si la contraseña esta vacia (como es en la primera verificacion del correo solo verifica el correo
+ * si no esta vacia verifica la contraseña ya que el correo ya esta verificado)
+*/
 
-const URL_SERVER = "http://52.87.217.52:3000/";
+async function comprobarDatosServidor(email, contraseña) {
 
-
-async function comprobarEmailEnServidor(email) {
-    try {
-        const response = await fetch(URL_SERVER + "usuarios");
-        if (response.ok) {
-            const usuarios = await response.json();
-            for (const usuario of usuarios) {
-                if (usuario.correo === email) {
-                    console.log(true);
-                    return true;
+    if (contraseña === undefined | contraseña === null) {
+        try {
+            const response = await fetch(URL_SERVER + "usuarios?correo=" + email);
+            if (response.ok) {
+                const usuarios = await response.json();
+                if (usuarios.correo === email) {
+                    return true
+                } else {
+                    console.log("error");
+                    throw new Error("Error de servidor");
                 }
             }
-        } else {
-            console.log("error");
-            throw new Error("Error de servidor");
+        } catch (error) {
+            console.error(error);
         }
-    } catch (error) {
-        console.error(error);
     }
-}
 
-/**Logica valicacion del contraseña con el servidor */
-
-async function comprobarContraseñaEnServidor(email, contraseña) {
-    try {
-        const response = await fetch(URL_SERVER + "usuarios");
-        if (response.ok) {
-            const usuarios = await response.json();
-            for (const usuario of usuarios) {
-                if (usuario.correo === email) {
-                    console.log(true);
-                    if (usuario.contraseña === contraseña) {
-                        console.log(true);
-                        return true;
-                    }
-                    return [true, usuario.nombre_usuario]
+    else {
+        try {
+            const response = await fetch(URL_SERVER + "usuarios?correo=" + email);
+            if (response.ok) {
+                const usuarios = await response.json();
+                if (usuarios.contraseña === contraseña) {
+                    return true
+                } else {
+                    console.log("error");
+                    throw new Error("Error de servidor");
                 }
-
+            } else {
+                console.log("error");
+                throw new Error("Error de servidor");
             }
-        } else {
-            console.log("error");
-            throw new Error("Error de servidor");
+        } catch (error) {
+            console.error(error);
         }
-    } catch (error) {
-        console.error(error);
     }
 }
 
 /**Logica valicacion del registro con el servidor */
 
-async function comprobarUsuarioEnServidor(usuario) {
+async function comprobarUsuarioEnServidor(nombre_usuario) {
     try {
-        const response = await fetch(URL_SERVER + "usuarios");
+        const response = await fetch(URL_SERVER + "usuarios?nombre_usuario=" + nombre_usuario + "&_limit=1");
         if (response.ok) {
             const usuarios = await response.json();
             for (const usuario of usuarios) {
-                if (usuario.nombre_usuario === usuario) {
+                if (usuario.nombre_usuario === nombre_usuario) {
                     console.log(true);
                     return true;
                 }
