@@ -39,3 +39,14 @@
     width: 400px;
     object-fit: cover;
 }
+
+
+@media (prefers-reduced-motion) {
+    #segment3 {
+        animation: none;
+    }
+
+    #cartapequeña:hover {
+        transform: none;
+    }
+}

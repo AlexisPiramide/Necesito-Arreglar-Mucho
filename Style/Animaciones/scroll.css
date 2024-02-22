@@ -1,0 +1,19 @@
+body {
+    min-height: 200vh;
+}
+
+#scroll-progress {
+    position: fixed;
+    top: 0;
+    width: 0%;
+    height: 4px;
+    background: #7983ff;
+    z-index: 10000;
+}
+
+
+@media (prefers-reduced-motion) {
+    #scroll-progress {
+        display: none;
+    }
+}

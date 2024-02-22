@@ -21,18 +21,20 @@ function reanudadanimacion() {
     reanudaSlider();
     turnOnAnimations();
     showSlides();
+    reanudarScroll();
 }
 
 function pararanimacion() {
     paraLogo();
     pararSlider();
     turnOffAnimations();
+    pararScroll();
 }
 
-function reanudarLogo(){
+function reanudarLogo() {
     const wingPaths = document.querySelectorAll('#path8, #path9, #path10, #path11, #path12, #path13, #path14, #path15, #path16, #path17');
     const articulatePaths = document.querySelectorAll('#path3, #path4, #path5, #path6, #path7');
-   
+
     wingPaths.forEach(path => {
         path.style.animation = 'wing 8s infinite';
     });
@@ -49,7 +51,7 @@ function reanudarLogo(){
     }
 }
 
-function paraLogo(){
+function paraLogo() {
     const wingPaths = document.querySelectorAll('#path8, #path9, #path10, #path11, #path12, #path13, #path14, #path15, #path16, #path17');
     const articulatePaths = document.querySelectorAll('#path3, #path4, #path5, #path6, #path7');
 
@@ -71,28 +73,28 @@ function paraLogo(){
 
 function reanudaSlider() {
     let slides = document.getElementsByClassName("mySlidespaused");
-
+    slides[3].classList.replace("mySlides", "mySlidespaused");
     slides[2].classList.replace("mySlidespaused", "mySlides");
     slides[1].classList.replace("mySlidespaused", "mySlides");
     slides[0].classList.replace("mySlidespaused", "mySlides");
-    
+
 }
 
 function pararSlider() {
     let slides = document.getElementsByClassName("mySlides");
-    
+    slides[3].classList.replace("mySlides", "mySlidespaused");
     slides[2].classList.replace("mySlides", "mySlidespaused");
     slides[1].classList.replace("mySlides", "mySlidespaused");
     slides[0].classList.replace("mySlides", "mySlidespaused");
-   
-    
+
+
 }
 
 
 function turnOffAnimations() {
     var elements = document.querySelectorAll('#segment2, #segment4, #segment6, #segment3, #segment5');
 
-    elements.forEach(function(element) {
+    elements.forEach(function (element) {
         element.style.animationName = 'a';
     });
 }
@@ -101,7 +103,7 @@ function turnOffAnimations() {
 function turnOnAnimations() {
     var elements = document.querySelectorAll('#segment2, #segment4, #segment6, #segment3, #segment5');
 
-    elements.forEach(function(element) {
+    elements.forEach(function (element) {
         element.style.animationName = 'aparicionIzquierda';
     });
 }
@@ -118,4 +120,16 @@ function showSlides() {
     }
     slides[slideIndex - 1].style.display = "flex";
     setTimeout(showSlides, 5000);
+}
+
+document.addEventListener('DOMContentLoaded', boton);
+
+function pararScroll() {
+    const scrollProgress = document.getElementById('scroll-progress');
+    scrollProgress.style.display = 'none';
+}
+
+function reanudarScroll() {
+    const scrollProgress = document.getElementById('scroll-progress');
+    scrollProgress.style.display = 'flex'
 }

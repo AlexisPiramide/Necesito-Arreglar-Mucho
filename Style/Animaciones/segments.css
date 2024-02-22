@@ -9,7 +9,6 @@
     animation-name: aparicionIzquierda;
     animation-range: entry 10% contain 100%;
     animation-fill-mode: both;
-
 }
 
 @keyframes aparicionIzquierda {
@@ -23,5 +22,16 @@
 }
 
 @keyframes nada {
+
+}
+
+@media (prefers-reduced-motion) {
+    #segment2,
+    #segment4,
+    #segment6,
+    #segment3,
+    #segment5 {
+        animation-name: none;
+    }
 
 }

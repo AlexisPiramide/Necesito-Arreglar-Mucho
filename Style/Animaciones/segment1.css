@@ -99,3 +99,18 @@
     inherits: true;
     initial-value: 0turn;
 }
+
+
+@media (prefers-reduced-motion) {
+    #segment1:focus {
+        animation: none;
+    }
+
+    .mySlides > img {
+        animation: none;
+    }
+
+    .mySlidespaused {
+        animation: none;
+    }
+}

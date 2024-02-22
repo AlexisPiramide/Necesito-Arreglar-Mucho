@@ -32,3 +32,10 @@
     border: 1px solid #ddd;
     border-radius: 40px;
 }
+
+
+@media (prefers-reduced-motion) {
+    #segment2 {
+        animation: none;
+    }
+}
