@@ -215,7 +215,6 @@ function volverForm(e) {
 }
 
 
-
 function mostrarLogin() {
     const login = document.getElementById('formlogin');
     const form = document.getElementById('form');
@@ -259,8 +258,6 @@ function validarEmail() {
         emailInput.reportValidity();
     }
 }
-
-
 
 function ValidadorContraseña() {
     let passwordInput = document.getElementById("passwordregistro");
@@ -316,7 +313,6 @@ function GeneradorMensaje(Contraseña) {
 
     return mensaje;
 }
-
 
 function ValidadorConfirmarContraseña() {
     let passwordInput = document.getElementById("passwordregistro");

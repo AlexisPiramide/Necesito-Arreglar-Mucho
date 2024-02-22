@@ -4,7 +4,7 @@ botonfromularios.addEventListener("click", cambiarbotonfromularios);
 botonanimaciones.addEventListener("click", cambiarbotonanimaciones);
 
 function cambiarbotonarticulos() {
-    window.location = '/articulos.html';
+    window.location = '/index.html';
 }
 
 function cambiarbotonnuevo() {

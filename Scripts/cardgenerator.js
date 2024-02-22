@@ -1,8 +1,5 @@
-document.addEventListener("DOMContentLoaded", mainScript);
-
 
 const URL_SERVER = "http://52.87.217.52:3000/";
-
 
 document.addEventListener("DOMContentLoaded", mainScript);
 
